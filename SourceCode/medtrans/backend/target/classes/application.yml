@@ -1,0 +1,36 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/medtrans?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: root
+    password: 1234
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
+    open-in-view: false
+
+jwt:
+  secret: change-me-to-a-long-random-base64-or-plain-secret-min-32-bytes
+  expiration-ms: 86400000  # 24h
+
+ai:
+  base-url: ${FASTAPI_URL:https://subplot-strep-ragweed.ngrok-free.dev}
+  timeout-ms: 30000
+
+cors:
+  allowed-origins: http://localhost:5173
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+
+logging:
+  level:
+    com.medtrans: INFO
+    org.springframework.web: INFO

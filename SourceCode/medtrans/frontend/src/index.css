@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root { height: 100%; }
+body { @apply bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100; }
+
+.scrollbar-thin::-webkit-scrollbar { width: 6px; height: 6px; }
+.scrollbar-thin::-webkit-scrollbar-thumb { @apply bg-slate-300 dark:bg-slate-700 rounded; }
+
+.bubble-user { @apply bg-brand-500 text-white rounded-2xl rounded-br-sm px-4 py-3 shadow-soft; }
+.bubble-ai   { @apply bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl rounded-bl-sm px-4 py-3 shadow-soft; }
+
+@keyframes blink { 0%,100%{opacity:.2} 50%{opacity:1} }
+.dot { @apply inline-block w-2 h-2 rounded-full bg-slate-400 mx-0.5; animation: blink 1.2s infinite; }
+.dot:nth-child(2){ animation-delay:.2s } .dot:nth-child(3){ animation-delay:.4s }

@@ -32,3 +32,6 @@ CREATE TABLE IF NOT EXISTS messages (
   CONSTRAINT fk_msg_conv FOREIGN KEY (conversation_id) REFERENCES conversations(id) ON DELETE CASCADE,
   INDEX idx_msg_conv (conversation_id, created_at)
 ) ENGINE=InnoDB;
+
+ALTER TABLE conversations ADD COLUMN type ENUM('TRANSLATION', 'CHATBOT') NOT NULL DEFAULT 'TRANSLATION';
+ALTER TABLE messages ADD COLUMN type ENUM('TRANSLATION', 'CHATBOT') NOT NULL DEFAULT 'TRANSLATION';

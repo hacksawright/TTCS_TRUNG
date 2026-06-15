@@ -23,6 +23,10 @@ ai:
   base-url: ${FASTAPI_URL:https://subplot-strep-ragweed.ngrok-free.dev}
   timeout-ms: 30000
 
+chatbot:
+  base-url: ${CHATBOT_URL:http://localhost:8000}
+  timeout-ms: 30000
+
 cors:
   allowed-origins: http://localhost:5173
 

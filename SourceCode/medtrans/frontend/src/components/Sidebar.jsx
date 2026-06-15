@@ -10,7 +10,29 @@ export default function Sidebar({ conversations, activeId, onSelect, onNew, onDe
     <>
       {open && <div className="fixed inset-0 bg-black/40 z-30 md:hidden" onClick={onClose} />}
       <aside className={`fixed md:static z-40 inset-y-0 left-0 w-72 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col transform transition-transform ${open?'translate-x-0':'-translate-x-full md:translate-x-0'}`}>
-        <div className="p-4 border-b border-slate-200 dark:border-slate-800">
+        <div className="p-4 border-b border-slate-200 dark:border-slate-800 space-y-3">
+          <div className="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-lg">
+            <button
+              onClick={() => nav('/')}
+              className={`flex-1 text-center py-1.5 text-xs font-medium rounded-md transition-all ${
+                window.location.pathname === '/' 
+                  ? 'bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-200 shadow-sm' 
+                  : 'text-slate-500 hover:text-slate-850 dark:hover:text-slate-200'
+              }`}
+            >
+              Dịch thuật
+            </button>
+            <button
+              onClick={() => nav('/chatbot')}
+              className={`flex-1 text-center py-1.5 text-xs font-medium rounded-md transition-all ${
+                window.location.pathname === '/chatbot' 
+                  ? 'bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-200 shadow-sm' 
+                  : 'text-slate-500 hover:text-slate-850 dark:hover:text-slate-200'
+              }`}
+            >
+              Chatbot y tế
+            </button>
+          </div>
           <button onClick={onNew} className="w-full bg-brand-500 hover:bg-brand-600 text-white py-2 rounded-lg font-medium">+ New chat</button>
         </div>
         <div className="flex-1 overflow-y-auto scrollbar-thin p-2 space-y-1">

@@ -1,5 +1,7 @@
 package com.medtrans.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.medtrans.entity.ConversationType;
 import jakarta.validation.constraints.*;
 import lombok.*;
 import java.time.LocalDateTime;
@@ -26,10 +28,11 @@ public class Dtos {
 
   @Data public static class CreateConversationRequest {
     @Size(max=255) private String title;
+    private ConversationType type;
   }
 
   @Data @AllArgsConstructor @NoArgsConstructor public static class ConversationDto {
-    private Long id; private String title; private LocalDateTime createdAt;
+    private Long id; private String title; private LocalDateTime createdAt; private ConversationType type;
   }
 
   @Data public static class TranslateRequest {
@@ -46,6 +49,7 @@ public class Dtos {
     private String translatedText;
     private Integer latencyMs;
     private LocalDateTime createdAt;
+    private ConversationType type;
   }
 
   @Data @AllArgsConstructor @NoArgsConstructor public static class AiRequest {
@@ -54,5 +58,28 @@ public class Dtos {
 
   @Data @AllArgsConstructor @NoArgsConstructor public static class AiResponse {
     private String output;
+  }
+
+  @Data public static class ChatbotRequest {
+    @NotNull private Long conversationId;
+    @NotBlank private String message;
+  }
+
+  @Data @AllArgsConstructor @NoArgsConstructor public static class ChatbotMessageResponse {
+    private Long id;
+    private Long conversationId;
+    private String senderType;
+    private String text;
+    private Integer latencyMs;
+    private LocalDateTime createdAt;
+  }
+
+  @Data @AllArgsConstructor @NoArgsConstructor public static class ChatbotAiRequest {
+    private String message;
+  }
+
+  @Data @AllArgsConstructor @NoArgsConstructor public static class ChatbotAiResponse {
+    @JsonProperty("answer")
+    private String response;
   }
 }

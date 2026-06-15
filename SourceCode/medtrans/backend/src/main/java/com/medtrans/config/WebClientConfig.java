@@ -18,6 +18,9 @@ public class WebClientConfig {
   @Value("${ai.base-url}")  private String baseUrl;
   @Value("${ai.timeout-ms}") private int timeoutMs;
 
+  @Value("${chatbot.base-url}")  private String chatbotBaseUrl;
+  @Value("${chatbot.timeout-ms}") private int chatbotTimeoutMs;
+
   @Bean
   public WebClient aiWebClient() {
     HttpClient httpClient = HttpClient.create()
@@ -27,6 +30,19 @@ public class WebClientConfig {
         .addHandlerLast(new WriteTimeoutHandler(timeoutMs, TimeUnit.MILLISECONDS)));
     return WebClient.builder()
       .baseUrl(baseUrl)
+      .clientConnector(new ReactorClientHttpConnector(httpClient))
+      .build();
+  }
+
+  @Bean
+  public WebClient chatbotWebClient() {
+    HttpClient httpClient = HttpClient.create()
+      .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, chatbotTimeoutMs)
+      .doOnConnected(conn -> conn
+        .addHandlerLast(new ReadTimeoutHandler(chatbotTimeoutMs, TimeUnit.MILLISECONDS))
+        .addHandlerLast(new WriteTimeoutHandler(chatbotTimeoutMs, TimeUnit.MILLISECONDS)));
+    return WebClient.builder()
+      .baseUrl(chatbotBaseUrl)
       .clientConnector(new ReactorClientHttpConnector(httpClient))
       .build();
   }

@@ -14,6 +14,10 @@ public class Message {
   @Column(name = "translated_text", columnDefinition = "TEXT") private String translatedText;
   @Column(name = "latency_ms") private Integer latencyMs;
   @Column(name = "created_at", nullable = false, updatable = false) private LocalDateTime createdAt;
-  @PrePersist void pre() { if (createdAt == null) createdAt = LocalDateTime.now(); }
+  @Enumerated(EnumType.STRING) @Column(nullable = false) private ConversationType type;
+  @PrePersist void pre() {
+    if (createdAt == null) createdAt = LocalDateTime.now();
+    if (type == null) type = ConversationType.TRANSLATION;
+  }
   public enum SenderType { USER, AI }
 }

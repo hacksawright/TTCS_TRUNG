@@ -1,11 +1,14 @@
 com\medtrans\entity\Message$MessageBuilder.class
+com\medtrans\dto\Dtos$ChatbotAiResponse.class
+com\medtrans\entity\ConversationType.class
 com\medtrans\exception\GlobalExceptionHandler.class
 com\medtrans\service\ChatService.class
 com\medtrans\entity\Conversation$ConversationBuilder.class
+com\medtrans\dto\Dtos$ChatbotAiRequest.class
 com\medtrans\entity\Conversation.class
 com\medtrans\repository\UserRepository.class
 com\medtrans\entity\Message$SenderType.class
-com\medtrans\security\JwtUtils.class
+com\medtrans\dto\Dtos$ChatbotRequest.class
 com\medtrans\dto\Dtos$MessageDto.class
 com\medtrans\dto\Dtos$LoginRequest.class
 com\medtrans\service\AuthService.class
@@ -16,9 +19,9 @@ com\medtrans\service\AiClient$PredictResult.class
 com\medtrans\dto\Dtos$TranslateRequest.class
 com\medtrans\dto\Dtos$AiResponse.class
 com\medtrans\exception\ApiException.class
-com\medtrans\config\SecurityConfig.class
 com\medtrans\entity\User$Role.class
 com\medtrans\service\AiClient.class
+com\medtrans\dto\Dtos$ChatbotMessageResponse.class
 com\medtrans\dto\Dtos$RegisterRequest.class
 com\medtrans\entity\User$UserBuilder.class
 com\medtrans\repository\MessageRepository.class
@@ -27,8 +30,8 @@ com\medtrans\controller\AuthController.class
 com\medtrans\repository\ConversationRepository.class
 com\medtrans\entity\User.class
 com\medtrans\dto\Dtos$CreateConversationRequest.class
-com\medtrans\security\JwtAuthFilter.class
 com\medtrans\entity\Message.class
 com\medtrans\dto\Dtos$AiRequest.class
 com\medtrans\dto\Dtos$AuthResponse.class
+com\medtrans\config\WebConfig.class
 com\medtrans\dto\Dtos.class
